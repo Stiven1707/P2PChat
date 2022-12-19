@@ -13,21 +13,42 @@ import java.io.IOException;
 import java.net.Socket;
 
 /**
- *
- * @author Mike
+ * Clase Connection
+ * 
+ * Clase que representa una conexión entre un cliente y un servidor en un
+ * sistema de chat peer-to-peer. Almacena un buffer de lectura, un nombre de
+ * usuario y un objeto ServerThread y proporciona un método para actualizar la
+ * escucha de mensajes de otros pares.
  */
 public class Connection {
 
+    // Atributo que almacena un buffer de lectura
     private BufferedReader bufferedReader;
+    // Atributo que almacena el nombre de usuario
     private String username;
+    // Atributo que almacena un objeto ServerThread
     private ServerThread server;
 
+    /**
+     * Constructor de la clase que inicializa los atributos bufferedReader,
+     * username y server con los valores de los parámetros que se le pasan al
+     * constructor.
+     *
+     * @param bufferedReader buffer de lectura
+     * @param username nombre de usuario
+     * @param server objeto ServerThread
+     */
     public Connection(BufferedReader bufferedReader, String username, ServerThread server) {
         this.bufferedReader = bufferedReader;
         this.username = username;
         this.server = server;
     }
-
+    /**
+     * Método que actualiza la escucha de mensajes de otros pares. Lee una lista de direcciones IP:puerto
+     * de la consola y crea una conexión con cada una de ellas. Si se ingresa el carácter 's', se omite
+     * el proceso de conexión y se pasa a la siguiente etapa de comunicación.
+     * @throws Exception
+     */
     public void updateListenToPeer() throws Exception {
         System.out.println(">Digite la lista de ipv4:puerto(separados por espacios):");
         System.out.println("Ingrese el puerto para recibir mensajes de sus pares (s para omitir):");

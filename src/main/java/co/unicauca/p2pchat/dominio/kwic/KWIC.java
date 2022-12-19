@@ -3,8 +3,13 @@ package co.unicauca.p2pchat.dominio.kwic;
 import java.util.ArrayList;
 
 /**
+ * Clase KWIC (Key Word In Context)
  *
- * @author Mike
+ * Esta clase se encarga de almacenar y mostrar una lista de oraciones
+ * (Sentence) que se le van agregando a través del método agregarSentencia().
+ * Además, permite mostrar la lista de oraciones ordenadas alfabéticamente
+ * mediante el método mostrarListaOrdenada().
+ *
  */
 public class KWIC {
 
@@ -13,6 +18,11 @@ public class KWIC {
     public KWIC() {
     }
 
+    /**
+     * Método que permite agregar una nueva oración a la lista de oraciones.
+     *
+     * @param frase Oración que se desea agregar
+     */
     public void agregarSentencia(String frase) {
         Sentence sentencia = new Sentence(frase);
         listaSentence.add(sentencia);
@@ -23,6 +33,9 @@ public class KWIC {
         }
     }
 
+    /**
+     * Método que muestra la lista de oraciones desordenadas
+     */
     public void mostrarLista() {
         System.out.println("\n\nLista desordenada:");
         for (int i = 0; i < listaSentence.size(); i++) {
@@ -30,6 +43,12 @@ public class KWIC {
         }
     }
 
+    /**
+     * Método que muestra la lista de oraciones ordenadas alfabéticamente
+     *
+     * @param nombre Nombre que se desea mostrar junto a cada oración en la
+     * lista
+     */
     public void mostrarListaOrdenada(String nombre) {
         Sorter sort = new Sorter(listaSentence);
         sort.listaOrdenada();
